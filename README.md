@@ -6,7 +6,7 @@ Most "agents" execute every instruction they receive. This is a decision layer t
 
 It ships with four wired-up domains (refund approval, support ticket triage, code deploy gating, content moderation), a live demo UI, a dedicated failure-test page, and a test suite that exercises every scenario plus two adversarial attacks.
 
-**Live demo:** _add your deployed URL here after `vercel deploy`_
+**Live demo:** https://decision-engine-zeta.vercel.app
 **90-second walkthrough:** _add your Loom link here_
 
 ---
