@@ -9,8 +9,8 @@
 /build
 
 # local env files
-.env
-.env*.local
+.env*
+!.env.example
 
 # runtime data (audit trail persisted locally in dev)
 /data/audit/*.jsonl
