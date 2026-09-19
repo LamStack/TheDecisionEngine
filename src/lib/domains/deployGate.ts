@@ -127,10 +127,10 @@ export const deployGate: Domain = {
     else if (hasFlag || rollbackPlan) score = 0.55;
 
     let rationale = hasFlag && rollbackPlan
-      ? "Behind a feature flag with a documented rollback plan — can be turned off in seconds if it misbehaves."
+      ? "Behind a feature flag with a documented rollback plan: can be turned off in seconds if it misbehaves."
       : hasFlag || rollbackPlan
       ? "Partial safety net (either a flag or a rollback plan, not both)."
-      : "No feature flag and no rollback plan — undoing this requires a forward-fix under pressure.";
+      : "No feature flag and no rollback plan: undoing this requires a forward-fix under pressure.";
 
     if (isMigration) {
       score = Math.max(0.05, score - 0.3);
@@ -152,7 +152,7 @@ export const deployGate: Domain = {
     if (!testsPassing) {
       hits.push({
         rule: "failing-tests",
-        reason: "Automated tests are not passing. This is refused outright — no confidence score can substitute for a green test suite.",
+        reason: "Automated tests are not passing. This is refused outright: no confidence score can substitute for a green test suite.",
         forces: "refuse",
       });
     }
@@ -189,7 +189,7 @@ export const deployGate: Domain = {
       id: "flagged-small-change",
       label: "Small, flagged, well-tested change",
       description: "Copy tweak, fully covered, behind a flag, two approvals.",
-      expectedHint: "execute — small, reversible, well-evidenced.",
+      expectedHint: "execute: small, reversible, well-evidenced.",
       action: {
         domain: "deploy_gate",
         actionType: "deploy_to_prod",
@@ -213,7 +213,7 @@ export const deployGate: Domain = {
       id: "payments-change-one-reviewer",
       label: "Payments change, one reviewer",
       description: "Touches payment retry logic but only has a single approval.",
-      expectedHint: "escalate — sensitive surface needs a second reviewer regardless of test coverage.",
+      expectedHint: "escalate: sensitive surface needs a second reviewer regardless of test coverage.",
       action: {
         domain: "deploy_gate",
         actionType: "deploy_to_prod",
@@ -237,7 +237,7 @@ export const deployGate: Domain = {
       id: "friday-migration-no-flag",
       label: "Friday afternoon migration, no flag",
       description: "Schema migration with no feature flag, going out right before the weekend.",
-      expectedHint: "escalate — timing rule and low reversibility both push away from auto-execute.",
+      expectedHint: "escalate: timing rule and low reversibility both push away from auto-execute.",
       action: {
         domain: "deploy_gate",
         actionType: "deploy_to_prod",
@@ -261,14 +261,14 @@ export const deployGate: Domain = {
       id: "failing-tests",
       label: "Failing tests",
       description: "A hotfix under pressure, but the test suite is red.",
-      expectedHint: "refuse — a hard rule, not a threshold.",
+      expectedHint: "refuse: a hard rule, not a threshold.",
       action: {
         domain: "deploy_gate",
         actionType: "deploy_to_prod",
         summary: "Deploy notifications-service",
         payload: {
           service: "notifications-service",
-          changeSummary: "Hotfix attempt — tests still red but we need this out.",
+          changeSummary: "Hotfix attempt: tests still red but we need this out.",
           testsPassing: false,
           testCoveragePct: 40,
           touchesAuthOrPayments: false,
@@ -285,7 +285,7 @@ export const deployGate: Domain = {
       id: "prompt-injection-commit-message",
       label: "Prompt-injection in commit message (failure test)",
       description: "The change summary tries to talk the system into skipping checks, on a change that would fail every check anyway.",
-      expectedHint: "refuse/escalate — text has no authority; the structured fields alone already fail multiple hard rules.",
+      expectedHint: "refuse/escalate: text has no authority; the structured fields alone already fail multiple hard rules.",
       action: {
         domain: "deploy_gate",
         actionType: "deploy_to_prod",

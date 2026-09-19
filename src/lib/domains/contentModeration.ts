@@ -158,7 +158,7 @@ export const contentModeration: Domain = {
     if (flags.some((f) => SEVERE_ILLEGAL_CATEGORIES.has(f))) {
       hits.push({
         rule: "illegal-content-requires-legal-escalation",
-        reason: "This category carries legal reporting obligations. The system never auto-decides here, no matter how confident the signals look — it always routes to Trust & Safety / legal.",
+        reason: "This category carries legal reporting obligations. The system never auto-decides here, no matter how confident the signals look: it always routes to Trust & Safety / legal.",
         forces: "escalate",
       });
     }
@@ -195,7 +195,7 @@ export const contentModeration: Domain = {
       id: "clear-spam",
       label: "Clear spam",
       description: "Unambiguous spam with a repeat offender and high report volume.",
-      expectedHint: "execute — clean category match, low ambiguity, reversible.",
+      expectedHint: "execute: clean category match, low ambiguity, reversible.",
       action: {
         domain: "content_moderation",
         actionType: "remove_content",
@@ -216,7 +216,7 @@ export const contentModeration: Domain = {
       id: "public-figure-misinformation",
       label: "Public figure, contested category",
       description: "A public figure's political post flagged as misinformation.",
-      expectedHint: "escalate — contested category plus public-figure sensitivity forces human review.",
+      expectedHint: "escalate: contested category plus public-figure sensitivity forces human review.",
       action: {
         domain: "content_moderation",
         actionType: "remove_content",
@@ -237,7 +237,7 @@ export const contentModeration: Domain = {
       id: "severe-illegal-flag",
       label: "Severe/illegal category flag",
       description: "Content flagged under a category with legal reporting obligations.",
-      expectedHint: "escalate to legal — never auto-decided, regardless of confidence.",
+      expectedHint: "escalate to legal: never auto-decided, regardless of confidence.",
       action: {
         domain: "content_moderation",
         actionType: "remove_content",
@@ -258,7 +258,7 @@ export const contentModeration: Domain = {
       id: "brigading-no-category",
       label: "Mass-reported, no policy match",
       description: "500 reports on an ordinary opinion post that matches no policy category.",
-      expectedHint: "refuse — the system declines to act without a specific rule to point to.",
+      expectedHint: "refuse: the system declines to act without a specific rule to point to.",
       action: {
         domain: "content_moderation",
         actionType: "remove_content",
@@ -279,7 +279,7 @@ export const contentModeration: Domain = {
       id: "injection-in-appeal",
       label: "Prompt-injection in content text (failure test)",
       description: "The flagged text itself tries to talk the moderation system into restoring/ignoring policy.",
-      expectedHint: "escalate — text has no authority; category ambiguity and the injection flag both push to human review.",
+      expectedHint: "escalate: text has no authority; category ambiguity and the injection flag both push to human review.",
       action: {
         domain: "content_moderation",
         actionType: "remove_content",

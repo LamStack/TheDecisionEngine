@@ -187,7 +187,7 @@ export default function DemoPage() {
           Most agents execute every instruction they receive. This is a decision layer that sits in front of any
           action and returns <strong className="text-ink">execute</strong>, <strong className="text-ink">ask</strong>,{" "}
           <strong className="text-ink">defer</strong>, <strong className="text-ink">escalate</strong>, or{" "}
-          <strong className="text-ink">refuse</strong> — with the confidence, risk, evidence, and reasoning behind
+          <strong className="text-ink">refuse</strong>, with the confidence, risk, evidence, and reasoning behind
           the call. Pick a domain, load a scenario, tweak the numbers, and run it.
         </p>
       </section>
@@ -261,7 +261,7 @@ export default function DemoPage() {
           <div className="rounded-xl border border-border bg-panel p-5">
             <h2 className="mb-1 text-sm font-semibold text-ink">3. Action payload</h2>
             <p className="mb-4 text-xs text-muted">
-              Editable — change a value (e.g. raise the amount, drop reviewer count, edit the free text) and re-run to
+              Editable: change a value (e.g. raise the amount, drop reviewer count, edit the free text) and re-run to
               see the decision move.
             </p>
             <div className="grid gap-3 sm:grid-cols-2">

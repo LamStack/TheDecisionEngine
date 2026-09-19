@@ -66,7 +66,7 @@ export function ResultPanel({ result }: { result: DecisionResult }) {
               <li key={h.rule} className="text-sm">
                 <span className="font-mono text-orange-300">{h.rule}</span>{" "}
                 <span className="text-muted">
-                  (forces <strong>{h.forces}</strong>) &mdash; {h.reason}
+                  (forces <strong>{h.forces}</strong>): {h.reason}
                 </span>
               </li>
             ))}
@@ -144,7 +144,7 @@ export function ResultPanel({ result }: { result: DecisionResult }) {
           </div>
           {result.textAnalysis.injectionMatches.length > 0 && (
             <p className="mt-2 text-xs text-muted">
-              Note: this only ever adds a risk signal — it never branches control flow directly.
+              Note: this only ever adds a risk signal. It never branches control flow directly.
             </p>
           )}
         </div>

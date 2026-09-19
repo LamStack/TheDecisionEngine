@@ -29,7 +29,7 @@ export default function AuditPage() {
       <section>
         <h1 className="text-2xl font-semibold text-ink">Audit Trail</h1>
         <p className="mt-2 max-w-3xl text-sm text-muted">
-          Every decision the engine makes — from the demo, the API, or the failure test — is recorded here with its
+          Every decision the engine makes, from the demo, the API, or the failure test, is recorded here with its
           full inputs, signals, and reasoning. Nothing is decided off the record.
         </p>
       </section>

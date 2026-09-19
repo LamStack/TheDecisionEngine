@@ -166,7 +166,7 @@ export const ticketTriage: Domain = {
     if (HIGH_RISK_CATEGORIES.has(category)) {
       hits.push({
         rule: "high-risk-category-human-only",
-        reason: `Category "${category}" is never auto-handled — security and legal matters always go to a trained human, regardless of confidence.`,
+        reason: `Category "${category}" is never auto-handled: security and legal matters always go to a trained human, regardless of confidence.`,
         forces: "escalate",
       });
     }
@@ -195,7 +195,7 @@ export const ticketTriage: Domain = {
       id: "routine-password-reset",
       label: "Routine password reset",
       description: "Clear, low-stakes technical request from an established account.",
-      expectedHint: "execute — well-understood, reversible, low risk.",
+      expectedHint: "execute: well-understood, reversible, low risk.",
       action: {
         domain: "ticket_triage",
         actionType: "auto_respond_and_close",
@@ -215,7 +215,7 @@ export const ticketTriage: Domain = {
       id: "angry-billing-dispute",
       label: "Angry billing dispute",
       description: "Double-charge complaint with hostile tone and a lawyer mention, but not flagged as a legal category.",
-      expectedHint: "escalate — sentiment + billing risk push past auto-execute even without a hard rule.",
+      expectedHint: "escalate: sentiment + billing risk push past auto-execute even without a hard rule.",
       action: {
         domain: "ticket_triage",
         actionType: "auto_respond_and_close",
@@ -236,7 +236,7 @@ export const ticketTriage: Domain = {
       id: "security-report",
       label: "Suspicious login report",
       description: "Customer reports unauthorized account access.",
-      expectedHint: "escalate — security category is never auto-handled.",
+      expectedHint: "escalate: security category is never auto-handled.",
       action: {
         domain: "ticket_triage",
         actionType: "auto_respond_and_close",
@@ -244,7 +244,7 @@ export const ticketTriage: Domain = {
         payload: {
           ticketId: "T-6003",
           category: "security",
-          message: "I think someone accessed my account without permission — I see a login from a device I don't recognize.",
+          message: "I think someone accessed my account without permission: I see a login from a device I don't recognize.",
           customerTier: "enterprise",
           priorTicketsThisMonth: 0,
           accountAgeDays: 900,
@@ -256,7 +256,7 @@ export const ticketTriage: Domain = {
       id: "wellbeing-flag",
       label: "Wellbeing risk language",
       description: "Message includes language that should always reach a human.",
-      expectedHint: "escalate — safety rule overrides everything else, including a low-severity category.",
+      expectedHint: "escalate: safety rule overrides everything else, including a low-severity category.",
       action: {
         domain: "ticket_triage",
         actionType: "auto_respond_and_close",
@@ -276,7 +276,7 @@ export const ticketTriage: Domain = {
       id: "missing-tier-info",
       label: "Missing customer tier",
       description: "A perfectly normal request, but the required customer-tier field never made it through.",
-      expectedHint: "ask — required evidence is incomplete.",
+      expectedHint: "ask: required evidence is incomplete.",
       action: {
         domain: "ticket_triage",
         actionType: "auto_respond_and_close",

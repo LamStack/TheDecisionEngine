@@ -4,7 +4,7 @@ import { Nav } from "@/components/Nav";
 
 export const metadata: Metadata = {
   title: "The Decision Engine",
-  description: "An AI system that knows when it is allowed to act — execute, ask, defer, escalate, or refuse.",
+  description: "An AI system that knows when it is allowed to act: execute, ask, defer, escalate, or refuse.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
